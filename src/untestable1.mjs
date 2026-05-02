@@ -1,5 +1,7 @@
 const millisPerDay = 24 * 60 * 60 * 1000;
 
+// new Date() is untestable as time obviously changes.
+// Solution is to pass time as a parameter.
 export function daysUntilChristmas() {
   const now = new Date();
   const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
