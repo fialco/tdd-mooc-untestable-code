@@ -13,7 +13,11 @@ describe("Testable 3: CSV file parsing", () => {
     expect(person.firstName).to.equal("Yor");
   });
 
-  // TODO: test parse lastName
+  test("parse last name", () => {
+    const person = parsePeopleCsv("Anya,Forger,6,Female")[0];
+    expect(person.lastName).to.equal("Forger");
+  });
+
   // TODO: test parse gender
   // TODO: test parse gender first letter lowercase
   // TODO: test parse age
