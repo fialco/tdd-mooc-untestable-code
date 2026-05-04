@@ -18,8 +18,16 @@ describe("Testable 3: CSV file parsing", () => {
     expect(person.lastName).to.equal("Forger");
   });
 
-  // TODO: test parse gender
-  // TODO: test parse gender first letter lowercase
+  test("parse gender", () => {
+    const person = parsePeopleCsv("Anya,Forger,6,female")[0];
+    expect(person.gender).to.equal("f");
+  });
+
+  test("parse gender always returns lowercase", () => {
+    const person = parsePeopleCsv("Anya,Forger,6,Female")[0];
+    expect(person.gender).to.equal("f");
+  });
+
   // TODO: test parse age
   // TODO: test age not given
   // TODO: test skip empty lines
