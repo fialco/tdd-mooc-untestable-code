@@ -1,6 +1,10 @@
 import { readFile } from "node:fs/promises";
 import { parse } from "csv-parse/sync";
 
+// Similar to testing randomness previously, the file reading should be in
+// its own function and parsing in its own as suggested in https://tdd.mooc.fi/3-challenges/
+// This way only the file reading function should be async
+
 export async function parsePeopleCsv(filePath) {
   const csvData = await readFile(filePath, { encoding: "utf8" });
   const records = parse(csvData, {
