@@ -8,14 +8,11 @@ import { parsePeopleCsv } from "../src/testable3.mjs";
 // Yor,Forger,27,Female
 
 describe("Testable 3: CSV file parsing", () => {
-  test("todo", async () => {
-    // TODO: write proper tests
-    try {
-      expect(await parsePeopleCsv("people.csv")).to.deep.equal([]);
-    } catch (e) {}
+  test("parse first name", () => {
+    const person = parsePeopleCsv("Yor,Forger,27,Female")[0];
+    expect(person.firstName).to.equal("Yor");
   });
 
-  // TODO: test parse firstName
   // TODO: test parse lastName
   // TODO: test parse gender
   // TODO: test parse gender first letter lowercase
