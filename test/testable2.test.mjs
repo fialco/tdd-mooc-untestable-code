@@ -13,4 +13,18 @@ describe("Testable 2: a dice game", () => {
     expect(diceHandValue(1, 3)).to.equal(3);
     expect(diceHandValue(5, 6)).to.equal(6);
   });
+
+  test("rolls are always between 1 and 6", () => {
+    const rolls = new Array();
+    for (let i = 0; i < 100; i++) {
+      rolls.push(diceRoll());
+    }
+
+    let rollCounts = rolls.reduce((acc, curr) => {
+      acc[curr] = (acc[curr] || 0) + 1;
+      return acc;
+    }, {});
+
+    expect(rollCounts).to.be.and.an("object").that.has.all.keys("1", "2", "3", "4", "5", "6");
+  });
 });
