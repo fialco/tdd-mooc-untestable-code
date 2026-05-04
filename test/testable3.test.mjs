@@ -14,4 +14,13 @@ describe("Testable 3: CSV file parsing", () => {
       expect(await parsePeopleCsv("people.csv")).to.deep.equal([]);
     } catch (e) {}
   });
+
+  // TODO: test parse firstName
+  // TODO: test parse lastName
+  // TODO: test parse gender
+  // TODO: test parse gender first letter lowercase
+  // TODO: test parse age
+  // TODO: test age not given
+  // TODO: test skip empty lines
+  // TODO: test trim
 });
