@@ -9,7 +9,7 @@ export async function readUtf8File(filePath) {
   return await readFile(filePath, { encoding: "utf8" });
 }
 
-export async function parsePeopleCsv(csvData) {
+export function parsePeopleCsv(csvData) {
   const records = parse(csvData, {
     skip_empty_lines: true,
     trim: true,
