@@ -24,12 +24,20 @@ describe("Testable 3: CSV file parsing", () => {
   });
 
   test("parse gender always returns lowercase", () => {
-    const person = parsePeopleCsv("Anya,Forger,6,Female")[0];
-    expect(person.gender).to.equal("f");
+    const person = parsePeopleCsv("Loid,Forger,27,Male")[0];
+    expect(person.gender).to.equal("m");
   });
 
-  // TODO: test parse age
-  // TODO: test age not given
+  test("parse age", () => {
+    const person = parsePeopleCsv("Yor,Forger,27,Female")[0];
+    expect(person.age).to.equal(27);
+  });
+
+  test("parse without age return undefined", () => {
+    const person = parsePeopleCsv("Loid,Forger,,Male")[0];
+    expect(person.age).to.equal(undefined);
+  });
+
   // TODO: test skip empty lines
   // TODO: test trim
 });
