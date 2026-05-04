@@ -1,9 +1,13 @@
+// This function will stay the same.
+// Only change is to export this so tests can use this directly.
+// Now we can do property-based testing like in tetris shuffle.
 function diceRoll() {
   const min = 1;
   const max = 6;
   return Math.floor(Math.random() * (max + 1 - min) + min);
 }
 
+// Dice rolls should be passed as parameters like the time in testable1
 export function diceHandValue() {
   const die1 = diceRoll();
   const die2 = diceRoll();
