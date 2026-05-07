@@ -57,7 +57,9 @@ export class PostgresUserDao {
 // Once again use dependency injection.
 
 export class PasswordService {
-  users = PostgresUserDao.getInstance();
+  constructor(users) {
+    this.users = users
+  }
 
   async changePassword(userId, oldPassword, newPassword) {
     const user = await this.users.getById(userId);
