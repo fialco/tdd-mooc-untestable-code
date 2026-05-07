@@ -8,6 +8,11 @@ class fakeUserDao {
   async save(user) {
     this.users.push(user)
   }
+
+  async getById(userId) {
+    return this.users.find(({ user_id }) => user_id === userId)
+
+  }
 }
 
 
@@ -32,6 +37,13 @@ describe("Testable 4: enterprise application", () => {
     test("can save users", async () => {
       fakeUsers.save({ user_id: 123 })
       expect(fakeUsers.users[0].user_id).to.equal(123)
+    });
+
+    test("can get users by id", async () => {
+      fakeUsers.save({ user_id: 123 })
+
+      const user = await fakeUsers.getById(123)
+      expect(user.user_id).to.equal(123)
     });
   })
 
