@@ -38,6 +38,23 @@ describe("Testable 3: CSV file parsing", () => {
     expect(person.age).to.equal(undefined);
   });
 
-  // TODO: test skip empty lines
-  // TODO: test trim
+  test("skip empty lines", () => {
+    const output = parsePeopleCsv(`Loid,Forger,,Male
+
+    Anya,Forger,6,Female
+
+    Yor,Forger,27,Female
+    `);
+
+    expect(output).to.deep.equal([
+      { firstName: "Loid", lastName: "Forger", gender: "m" },
+      { firstName: "Anya", lastName: "Forger", gender: "f", age: 6 },
+      { firstName: "Yor", lastName: "Forger", gender: "f", age: 27 },
+    ]);
+  });
+
+  test("trim input", () => {
+    const person = parsePeopleCsv(" Anya       ,  Forger , 6   ,   Female ")[0];
+    expect(person).to.deep.equal({ firstName: "Anya", lastName: "Forger", gender: "f", age: 6 });
+  });
 });
