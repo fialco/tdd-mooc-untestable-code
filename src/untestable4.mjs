@@ -1,6 +1,11 @@
 import argon2 from "@node-rs/argon2";
 import pg from "pg";
 
+// PostgresUserDao is a singleton which creates problems with tests
+// that closes instances after test completion.
+// Setting up the db should be done outside.
+// Use dependency injection.
+
 export class PostgresUserDao {
   static instance;
 
@@ -47,6 +52,9 @@ export class PostgresUserDao {
     );
   }
 }
+
+// PasswordService should not have PostgresUserDao related code.
+// Once again use dependency injection.
 
 export class PasswordService {
   users = PostgresUserDao.getInstance();
