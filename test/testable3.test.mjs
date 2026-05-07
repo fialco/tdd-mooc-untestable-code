@@ -1,6 +1,6 @@
 import { describe, test } from "vitest";
 import { expect } from "chai";
-import { parsePeopleCsv } from "../src/testable3.mjs";
+import { parsePeopleCsv, readUtf8File } from "../src/testable3.mjs";
 
 // example input:
 // Loid,Forger,,Male
@@ -56,5 +56,10 @@ describe("Testable 3: CSV file parsing", () => {
   test("trim input", () => {
     const person = parsePeopleCsv(" Anya       ,  Forger , 6   ,   Female ")[0];
     expect(person).to.deep.equal({ firstName: "Anya", lastName: "Forger", gender: "f", age: 6 });
+  });
+
+  test("read file", async () => {
+    const content = await readUtf8File("./test/testing.txt");
+    expect(content).to.deep.equal("Testing reading file\n");
   });
 });
